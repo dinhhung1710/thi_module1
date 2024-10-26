@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý khách hàng</title>
+</head>
+<body>
+<h1 style="color: crimson">QUẢN LÝ KHÁCH HÀNG</h1>
+
+<div>
+    <h2>Thêm khách hàng mới</h2>
+    <label>Mã khách hàng: <input type="text" id="customerId"/></label><br>
+    <label>Tên khách hàng: <input type="text" id="customerName"/></label><br>
+    <label>Số điện thoại: <input type="text" id="customerPhone"/></label><br>
+    <label>Địa chỉ: <input type="text" id="customerAddress"/></label><br>
+    <label>Email: <input type="text" id="customerEmail"/></label><br>
+    <button onclick="addCustomer()">Thêm khách hàng</button>
+</div>
+
+<div>
+    <h2>Danh sách khách hàng</h2>
+    <ul id="customerList"></ul>
+</div>
+
+<script>
+    console.log("Script loaded");
+
+    class Customer {
+        constructor(id, name, phone, address, email) {
+            this.id = id;
+            this.name = name;
+            this.phone = phone;
+            this.address = address;
+            this.email = email;
+        }
+    }
+
+    let customers = [];
+
+    function addCustomer() {
+        const id = document.getElementById("customerId").value;
+        const name = document.getElementById("customerName").value;
+        const phone = document.getElementById("customerPhone").value;
+        const address = document.getElementById("customerAddress").value;
+        const email = document.getElementById("customerEmail").value;
+
+        if (id && name && phone && address && email) {
+            const newCustomer = new Customer(id, name, phone, address, email);
+            customers.push(newCustomer);
+
+            displayCustomers();
+
+            document.getElementById("customerId").value = "";
+            document.getElementById("customerName").value = "";
+            document.getElementById("customerPhone").value = "";
+            document.getElementById("customerAddress").value = "";
+            document.getElementById("customerEmail").value = "";
+        } else {
+            alert("Vui lòng nhập đầy đủ thông tin khách hàng.");
+        }
+    }
+
+    function displayCustomers() {
+        const customerList = document.getElementById("customerList");
+        customerList.innerHTML = "";
+
+        if (customers.length === 0) {
+            console.log("Không có khách hàng nào trong danh sách.");
+            return;
+        }
+
+        customers.forEach((customer) => {
+            const customerItem = document.createElement("li");
+            customerItem.textContent = `Mã: ${customer.id}, Tên: ${customer.name}, SĐT: ${customer.phone}, Địa chỉ: ${customer.address}, Email: ${customer.email}`;
+            customerList.appendChild(customerItem);
+        });
+    }
+
+</script>
+</body>
+</html>

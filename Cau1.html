@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array = [];
+
+    // Kiểm tra nhập vào không quá 20 phần tử
+    function addElementToArray(element) {
+
+        if (array.length < 20) {
+            array.push(element);
+            console.log("Phần tử đã được thêm vào mảng:", element);
+        } else {
+            console.log("Mảng đã đạt đến 20 phần tử.");
+        }
+    }
+
+    // Hiển thị ra được mảng
+    function displayArray() {
+        console.log("Mảngg hiện tại:", array);
+    }
+
+    // Hiển thị tổng các số là bội chung của 3 và 5
+    function calculateSumOfMultiples() {
+        let sum = 0;
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] % 3 === 0 && array[i] % 5 === 0) {
+                sum += array[i];
+            }
+        }
+        console.log("Tổng các số là bội chung của 3 và 5:", sum);
+    }
+
+    // Thêm các phần tử vào mảng
+    addElementToArray(15);
+    addElementToArray(30);
+    addElementToArray(45);
+    addElementToArray(50);
+    addElementToArray(60);
+    addElementToArray(75);
+
+    // Hiển thị mảng hiện tại
+    displayArray();
+
+    // Tính và hiển thị tổng các số là bội chung của 3 và 5
+    calculateSumOfMultiples();
+
+</script>
+
+</body>
+</html>

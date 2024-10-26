@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Khởi tạo mảng và số k
+    let arr = [];
+    let k;
+
+    // Hàm thêm phần tử vào mảng
+    function addElementToArray(element) {
+        if (arr.length < 50) {
+            arr.push(element);
+        } else {
+            console.log("Mảng đã đạt số phần tử tối đa là 50.");
+        }
+    }
+
+    // Hàm nhập giá trị cho k và kiểm tra k
+    function inputK(value) {
+        if (value > 0) {
+            k = value;
+        } else {
+            console.log("Vui lòng nhập số nguyên dương cho k.");
+        }
+    }
+
+    // Hàm đếm các cặp có tổng chia hết cho k
+    function countDivisiblePairs(arr, k) {
+        let count = 0;
+        // Kiểm tra từng cặp số trong mảng
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = i + 1; j < arr.length; j++) {
+                if ((arr[i] + arr[j]) % k === 0) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    // Hiển thị kết quả
+    function displayResult() {
+        if (k && arr.length <= 50) {
+            const result = countDivisiblePairs(arr, k);
+            console.log(`Số lượng các cặp có tổng chia hết cho ${k} là: ${result}`);
+        } else {
+            console.log("Kiểm tra lại điều kiện mảng hoặc k.");
+        }
+    }
+
+
+    addElementToArray(1);
+    addElementToArray(2);
+    addElementToArray(3);
+    addElementToArray(4);
+    addElementToArray(5);
+    addElementToArray(6);
+
+    inputK(5);
+    displayResult();
+
+</script>
+</body>
+</html>
